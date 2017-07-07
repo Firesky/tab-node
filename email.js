@@ -1,0 +1,35 @@
+//email.js
+
+'use strict';
+const nodemailer = require('nodemailer');
+
+// create reusable transporter object using the default SMTP transport
+let transporter = nodemailer.createTransport({
+    host: 'mail.drstub.com',
+    port: 25,
+    secure: false, // secure:true for port 465, secure:false for port 587
+    debug:true,
+    ignoreTLS : true,
+    auth: {
+        user: 'luke@drstub.com',
+        pass: 'ooozqb'
+    }
+});
+
+// setup email data with unicode symbols
+let mailOptions = {
+    from: '"Luke" <luke@drstub.com>', // sender address
+    to: 'luke@firesky.com.au', // list of receivers
+    subject: 'Hello', // Subject line
+    //text: 'Hello world ?', // plain text body
+    html: '<b>Hello world ?</b>' // html body
+};
+
+// send mail with defined transport object
+transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+        return console.log(error);
+    }
+    //console.log('Message %s sent: %s', info.messageId, info.response);
+    console.log(info);
+});
