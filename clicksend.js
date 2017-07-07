@@ -17,11 +17,12 @@ var sms =  {
         ]
     }
 
+
 controller.sendSms(sms, function(error, response, context){
 	if(error){
 		console.log(error);
 	}else{
 		console.log(response);
-		console.log(context);
+		//console.log(context);
 	}
 });
